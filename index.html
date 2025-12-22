@@ -425,11 +425,11 @@
     <div class="hero">
       <div class="card hero-main reveal">
         <h1>Ayush Garg</h1>
-        <p class="subtitle">Computer Science and Mathematics with Data Science Student | </p>
+        <p class="subtitle">Computer Science and Mathematics with Data Science Student </p>
 
         <div class="pill-row">
-          <span class="pill"><b>UW–Madison</b> • B.S. CS + Math (DS)</span>
-          <span class="pill"><b>Interests</b> • ML • Time-Series • Data Modeling</span>
+          <span class="pill"><b>UW–Madison</b> • B.S. CS + Math with DS</span>
+          <span class="pill"><b>Interests</b> • ML • Time-Series • Data analysis</span>
         </div>
 
         <div class="cta">
@@ -630,7 +630,7 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+        <!-- CONTACT -->
     <section id="contact" class="reveal">
       <div class="section-title">
         <h2>Contact</h2>
@@ -638,20 +638,24 @@
       </div>
 
       <div class="grid">
-        <div class="panel col-8">
+        <div class="panel col-12">
           <p style="margin:0;color:var(--text);font-weight:650;">Best way to reach me</p>
           <p style="margin-top:8px;">
-            Email me at <a href="mailto:garg45@wisc.edu" style="color:var(--accent);text-decoration:none;">garg45@wisc.edu</a>
+            Email me at
+            <a href="mailto:garg45@wisc.edu" style="color:var(--accent);text-decoration:none;">garg45@wisc.edu</a>
             or message me on LinkedIn.
           </p>
+
           <div class="contact-row">
             <a class="btn primary" href="mailto:garg45@wisc.edu">✉️ Email</a>
             <a class="btn" href="https://www.linkedin.com/in/ayush-garg-050070234/" target="_blank" rel="noopener">in LinkedIn</a>
             <a class="btn" href="resume.pdf" target="_blank" rel="noopener">📄 Resume</a>
           </div>
         </div>
+      </div>
+    </section>
 
-       
+  </main>
 
   <script>
     // Reveal on scroll
@@ -662,14 +666,6 @@
       });
     }, { threshold: 0.12 });
     reveals.forEach(el=>obs.observe(el));
-
-    // Back-to-top button
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=>{
-      if(window.scrollY > 600) toTop.classList.add('show');
-      else toTop.classList.remove('show');
-    });
-
   </script>
 </body>
 </html>
