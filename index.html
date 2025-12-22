@@ -3,66 +3,691 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ayush Garg</title>
+  <title>Ayush Garg | Portfolio</title>
+  <meta name="description" content="Ayush Garg — Computer Science and Mathematics with Data Science student. Portfolio, resume, projects, experience, and contact." />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg:#070b16;
+      --panel: rgba(255,255,255,.07);
+      --panel2: rgba(255,255,255,.10);
+      --text:#e9edf7;
+      --muted: rgba(233,237,247,.72);
+      --border: rgba(255,255,255,.12);
+      --accent:#38bdf8;
+      --accent2:#a78bfa;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1020px;
     }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 60px 20px;
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      line-height:1.55;
+      background:
+        radial-gradient(1200px 800px at 14% 8%, rgba(56,189,248,.18), transparent 60%),
+        radial-gradient(1200px 800px at 86% 24%, rgba(167,139,250,.14), transparent 60%),
+        radial-gradient(900px 700px at 50% 100%, rgba(56,189,248,.08), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
     }
-    h1 {
-      font-size: 2.5rem;
+
+    /* subtle animated grain */
+    body:before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.35;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,11,22,.55);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none; color:var(--text);
+      font-weight:700; letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(56,189,248,.10);
+    }
+    .nav-links{
+      display:flex; gap:12px; flex-wrap:wrap;
+    }
+    .nav-links a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.95rem;
+      padding:8px 10px;
+      border-radius:12px;
+      transition: .2s ease;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* LAYOUT */
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 34px 18px 70px;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:16px;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-main{
+      padding: 28px 24px;
+      position:relative;
+    }
+    .hero-main:after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 220px at 20% 0%, rgba(56,189,248,.22), transparent 60%),
+                  radial-gradient(520px 220px at 80% 0%, rgba(167,139,250,.18), transparent 60%);
+      opacity:.65;
+      pointer-events:none;
+      mask: linear-gradient(#000, transparent 65%);
+    }
+
+    h1{
+      margin: 0 0 8px;
+      font-size: clamp(2.2rem, 5vw, 3.1rem);
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin:0 0 16px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .pill-row{ display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 18px; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size:.92rem;
+    }
+    .pill b{ color: var(--text); font-weight:650; }
+
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      text-decoration:none;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 650;
+      display:inline-flex; align-items:center; gap:10px;
+      transition: .2s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(56,189,248,.22), rgba(167,139,250,.18));
+      border-color: rgba(56,189,248,.35);
+    }
+    .icon{
+      width:18px; height:18px; display:inline-block;
+    }
+
+    /* HERO SIDE */
+    .hero-side{
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .mini{
+      padding:16px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+    }
+    .mini h3{
+      margin:0 0 8px;
+      font-size: 1.02rem;
+    }
+    .mini p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .quicklinks{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
+    }
+    .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color: var(--muted);
+      text-decoration:none;
+      font-size:.92rem;
+      transition:.2s ease;
+    }
+    .chip:hover{ color:var(--text); background: rgba(255,255,255,.10); transform: translateY(-1px); }
+
+    /* SECTIONS */
+    section{
+      margin-top: 22px;
+    }
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin: 22px 0 10px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 1.35rem;
+      letter-spacing: .2px;
+    }
+    .section-title .hint{
+      color: var(--muted);
+      font-size:.92rem;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .col-6{ grid-column: span 6; }
+    .col-4{ grid-column: span 4; }
+    .col-8{ grid-column: span 8; }
+    .col-12{ grid-column: span 12; }
+    @media (max-width: 900px){
+      .col-6,.col-4,.col-8{ grid-column: span 12; }
+    }
+
+    .panel{
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .panel p{ color: var(--muted); margin: 8px 0 0; }
+
+    /* Skills */
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .skill{
+      padding: 9px 12px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size:.92rem;
+      cursor: default;
+      transition: .2s ease;
+    }
+    .skill:hover{ color:var(--text); transform: translateY(-1px); background: rgba(255,255,255,.09); }
+
+    /* Projects */
+    .project{
+      position:relative;
+      overflow:hidden;
+    }
+    .project .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
       margin-bottom: 10px;
     }
-    h2 {
-      margin-top: 40px;
-      border-bottom: 1px solid #334155;
-      padding-bottom: 5px;
+    .project h3{
+      margin:0;
+      font-size: 1.08rem;
     }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-      margin-right: 15px;
+    .tag{
+      font-size:.82rem;
+      color: var(--muted);
+      border:1px solid var(--border);
+      padding:6px 9px;
+      border-radius:999px;
+      background: rgba(255,255,255,.05);
+      white-space:nowrap;
     }
-    .buttons a {
-      display: inline-block;
+    .project ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .project li{ margin: 6px 0; }
+
+    /* Experience timeline */
+    .timeline{
+      position:relative;
+      margin-top: 6px;
+      padding-left: 16px;
+    }
+    .timeline:before{
+      content:"";
+      position:absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width:2px;
+      background: rgba(255,255,255,.12);
+    }
+    .t-item{
+      position:relative;
+      padding: 10px 10px 10px 14px;
+      margin: 10px 0;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .t-item:before{
+      content:"";
+      position:absolute;
+      left:-2px;
+      top: 16px;
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(56,189,248,.10);
+    }
+    .t-item .when{
+      color: var(--muted);
+      font-size:.9rem;
+      margin-bottom: 4px;
+    }
+    .t-item b{ color: var(--text); }
+    .t-item ul{ margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
+    .t-item li{ margin: 6px 0; }
+
+    /* Contact */
+    .contact-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
       margin-top: 10px;
-      padding: 10px 15px;
-      border: 1px solid #38bdf8;
-      border-radius: 6px;
+    }
+
+    /* Reveal animations */
+    .reveal{
+      opacity:0;
+      transform: translateY(10px);
+      transition: .6s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Back to top */
+    .to-top{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: .25s ease;
+    }
+    .to-top.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Small footer */
+    footer{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 18px 44px;
+      color: var(--muted);
+      font-size:.92rem;
+    }
+
+    /* Mobile nav: if cramped */
+    @media (max-width: 520px){
+      .nav-links{ display:none; }
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Ayush Garg</h1>
-    <p>Computer Science & Data Science Student | Aspiring Software Engineer</p>
 
-    <div class="buttons">
-      <a href="resume.pdf" target="_blank">Download Resume</a>
-      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-      <a href="mailto:your@email.com">Email</a>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="dot"></span>
+        <span>Ayush Garg</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card hero-main reveal">
+        <h1>Ayush Garg</h1>
+        <p class="subtitle">Computer Science and Mathematics with Data Science Student | Aspiring Software Engineer</p>
+
+        <div class="pill-row">
+          <span class="pill"><b>UW–Madison</b> • B.S. CS + Math (DS)</span>
+          <span class="pill"><b>Interests</b> • ML • Time-Series • Data Modeling</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">
+            <span class="icon">📄</span> Download Resume
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/ayush-garg-050070234/" target="_blank" rel="noopener">
+            <span class="icon">in</span> LinkedIn
+          </a>
+          <a class="btn" href="mailto:garg45@wisc.edu">
+            <span class="icon">✉️</span> Email
+          </a>
+        </div>
+
+        <p style="margin-top:16px;color:var(--muted);max-width:68ch;">
+          I’m a senior Computer Science and Math (Data Science) student with experience in applied machine learning,
+          time-series forecasting, and building reproducible modeling pipelines. I’m seeking full-time roles in
+          data science, software engineering, or quantitative analytics.
+        </p>
+      </div>
+
+      <aside class="card hero-side reveal">
+        <div class="mini">
+          <h3>Quick Links</h3>
+          <p>Jump to the most important sections.</p>
+          <div class="quicklinks">
+            <a class="chip" href="#projects">Projects</a>
+            <a class="chip" href="#experience">Experience</a>
+            <a class="chip" href="#contact">Contact</a>
+            <a class="chip" href="resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+          </div>
+        </div>
+
+        <div class="mini">
+          <h3>Currently</h3>
+          <p>
+            Building <b>LineUp</b> — a location-based Android app for real-time wait times and nearby places.
+          </p>
+        </div>
+
+        <div class="mini">
+          <h3>Focus Areas</h3>
+          <p>Time-series forecasting, probabilistic models, and data-driven product work.</p>
+        </div>
+      </aside>
     </div>
 
-    <h2>About Me</h2>
-    <p>
-      I am a motivated Computer Science and Mathematics student with experience in
-      data science, machine learning, and software development. I enjoy building
-      projects, learning new technologies, and solving challenging problems.
-    </p>
+    <!-- ABOUT -->
+    <section id="about" class="reveal">
+      <div class="section-title">
+        <h2>About</h2>
+        <span class="hint">A quick snapshot of who I am</span>
+      </div>
+      <div class="grid">
+        <div class="panel col-8">
+          <p style="margin:0;color:var(--text);">
+            I’m a Computer Science and Mathematics with Data Science student at the University of Wisconsin–Madison.
+            I enjoy turning messy data into clear decisions, and I like building tools that are both practical and
+            measurable.
+          </p>
+          <p>
+            Recently, I worked on financial time-series forecasting—reproducing and benchmarking probabilistic models
+            and building robust evaluation pipelines. I’m happiest when I’m learning fast, shipping improvements, and
+            measuring results.
+          </p>
+        </div>
+        <div class="panel col-4">
+          <p style="margin:0;color:var(--text);font-weight:650;">Looking for</p>
+          <p style="margin-top:6px;">
+            Full-time roles in <b>Data Science</b>, <b>Software Engineering</b>, or <b>Quantitative Analytics</b>.
+          </p>
+          <div class="contact-row">
+            <a class="btn" href="mailto:garg45@wisc.edu">Email</a>
+            <a class="btn" href="https://www.linkedin.com/in/ayush-garg-050070234/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>LineUp</strong> – Location-based restaurant wait-time Android app</li>
-      <li>Applied machine learning research in time-series forecasting</li>
-    </ul>
-  </div>
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <div class="section-title">
+        <h2>Skills</h2>
+        <span class="hint">Hover to highlight</span>
+      </div>
+      <div class="grid">
+        <div class="panel col-6">
+          <p style="margin:0;color:var(--text);font-weight:650;">Data Science</p>
+          <div class="skills">
+            <span class="skill">PyTorch</span>
+            <span class="skill">scikit-learn</span>
+            <span class="skill">Time-series forecasting</span>
+            <span class="skill">Probabilistic models</span>
+            <span class="skill">Model evaluation (RMSE, sMAPE)</span>
+            <span class="skill">Power BI</span>
+          </div>
+        </div>
+        <div class="panel col-6">
+          <p style="margin:0;color:var(--text);font-weight:650;">Programming & Math</p>
+          <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">SQL</span>
+            <span class="skill">Java</span>
+            <span class="skill">Linear Algebra</span>
+            <span class="skill">Probability</span>
+            <span class="skill">Statistical Analysis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <span class="hint">A few things I’m proud of</span>
+      </div>
+
+      <div class="grid">
+        <div class="panel project col-6">
+          <div class="top">
+            <div>
+              <h3>LineUp — Wait Time Android App</h3>
+              <div style="color:var(--muted);font-size:.92rem;margin-top:2px;">UW–Madison • Oct 2025 – Present</div>
+            </div>
+            <span class="tag">Kotlin • Jetpack Compose</span>
+          </div>
+          <p>
+            Android app that provides real-time wait time information for nearby restaurants and study places in Madison.
+          </p>
+          <ul>
+            <li>Integrated Google Maps API for location-based search and navigation.</li>
+            <li>Used Google Places API for restaurant data retrieval.</li>
+            <li>Implemented user preferences with SharedPreferences.</li>
+          </ul>
+          <div class="contact-row" style="margin-top:12px;">
+            <a class="btn" href="#contact">Request demo</a>
+          </div>
+        </div>
+
+        <div class="panel project col-6">
+          <div class="top">
+            <div>
+              <h3>Financial Time-Series Forecasting Benchmarks</h3>
+              <div style="color:var(--muted);font-size:.92rem;margin-top:2px;">Applied ML • Research-style work</div>
+            </div>
+            <span class="tag">PyTorch • GluonTS</span>
+          </div>
+          <p>
+            Reproduced and benchmarked probabilistic forecasting models on financial datasets with robust evaluation.
+          </p>
+          <ul>
+            <li>Compared models like DeepAR, TimeGrad, and winner-takes-all variants.</li>
+            <li>Built reproducible pipelines and tracked metrics (ND, RMSE, sMAPE, wQuantileLoss).</li>
+            <li>Focused on clean experiments and trustworthy comparisons.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="reveal">
+      <div class="section-title">
+        <h2>Experience</h2>
+        <span class="hint">Highlights from internships & roles</span>
+      </div>
+
+      <div class="grid">
+        <div class="panel col-12">
+          <div class="timeline">
+            <div class="t-item">
+              <div class="when">Jun 2025 – Sep 2025 • India</div>
+              <div><b>Motilal Oswal Financial Services</b> — Data Science Intern</div>
+              <ul>
+                <li>Conducted applied ML research in time-series forecasting for financial datasets.</li>
+                <li>Reproduced & benchmarked probabilistic forecasting models and built evaluation pipelines.</li>
+                <li>Worked with PyTorch/Lightning and GluonTS; tracked ND, RMSE, sMAPE, mean wQuantileLoss.</li>
+              </ul>
+            </div>
+
+            <div class="t-item">
+              <div class="when">May 2024 – Aug 2024 • India</div>
+              <div><b>GreyB</b> — Data Analysis Intern</div>
+              <ul>
+                <li>Built regression models in scikit-learn using CPC codes to forecast filing statistics.</li>
+                <li>Created visual analytics using Matplotlib/Seaborn to speed up decision-making.</li>
+              </ul>
+            </div>
+
+            <div class="t-item">
+              <div class="when">Jun 2023 – Aug 2023 • India</div>
+              <div><b>Root Analysis</b> — Digital Marketing & Data Analysis Intern</div>
+              <ul>
+                <li>Improved SEO and optimized 20+ pages contributing to better search visibility.</li>
+                <li>Used customer feedback from 200+ interactions to improve product direction.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <span class="hint">Let’s connect</span>
+      </div>
+
+      <div class="grid">
+        <div class="panel col-8">
+          <p style="margin:0;color:var(--text);font-weight:650;">Best way to reach me</p>
+          <p style="margin-top:8px;">
+            Email me at <a href="mailto:garg45@wisc.edu" style="color:var(--accent);text-decoration:none;">garg45@wisc.edu</a>
+            or message me on LinkedIn.
+          </p>
+          <div class="contact-row">
+            <a class="btn primary" href="mailto:garg45@wisc.edu">✉️ Email</a>
+            <a class="btn" href="https://www.linkedin.com/in/ayush-garg-050070234/" target="_blank" rel="noopener">in LinkedIn</a>
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">📄 Resume</a>
+          </div>
+        </div>
+
+        <div class="panel col-4">
+          <p style="margin:0;color:var(--text);font-weight:650;">Tip</p>
+          <p style="margin-top:8px;">
+            If you want, add your GitHub profile link here too once you’re ready.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="btn to-top" id="toTop" href="#top" aria-label="Back to top">↑ Top</a>
+
+  <footer>
+    © <span id="year"></span> Ayush Garg • Built with GitHub Pages
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('show');
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el=>obs.observe(el));
+
+    // Back-to-top button
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 600) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
