@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ayush Garg | Portfolio</title>
-  <meta name="description" content="Ayush Garg — Computer Science and Mathematics with Data Science student. Portfolio, resume, projects, experience, and contact." />
+  <meta name="description" content="Ayush Garg — Computer Science and Mathematics with Data Science. Portfolio, resume, projects, experience, and contact." />
 
   <style>
     :root{
@@ -429,7 +429,7 @@
 
         <div class="pill-row">
           <span class="pill"><b>UW–Madison</b> • B.S. CS + Math with DS</span>
-          <span class="pill"><b>Interests</b> • ML • Time-Series • Data analysis</span>
+          <span class="pill"><b>Interests</b> • ML • Time-Series Forecasting • Probabilistic Models • Data analysis</span>
         </div>
 
         <div class="cta">
@@ -488,7 +488,8 @@
 
   <p>
     I enjoy turning messy data into clear decisions, and I like building tools that are both practical and measurable.
-    I am currently seeking full-time roles in data science, software engineering, or quantitative analytics.
+    I am currently seeking full-time roles in data science, analytics, or quantitative analyst positions where forecasting and data-driven decision making are central.
+
   </p>
 </div>
 
@@ -506,36 +507,48 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="reveal">
-      <div class="section-title">
-        <h2>Skills</h2>
-        <span class="hint">Hover to highlight</span>
+<section id="skills" class="reveal">
+  <div class="section-title">
+    <h2>Skills</h2>
+    <span class="hint">Hover to highlight</span>
+  </div>
+
+  <div class="grid">
+    <!-- Data Science & Analytics -->
+    <div class="panel col-6">
+      <p style="margin:0;color:var(--text);font-weight:650;">
+        Data Science & Analytics
+      </p>
+      <div class="skills">
+        <span class="skill">Python</span>
+        <span class="skill">SQL</span>
+        <span class="skill">PyTorch</span>
+        <span class="skill">scikit-learn</span>
+        <span class="skill">Time-series forecasting</span>
+        <span class="skill">Probabilistic modeling</span>
+        <span class="skill">Model evaluation (RMSE, sMAPE, ND)</span>
       </div>
-      <div class="grid">
-        <div class="panel col-6">
-          <p style="margin:0;color:var(--text);font-weight:650;">Data Science</p>
-          <div class="skills">
-            <span class="skill">PyTorch</span>
-            <span class="skill">scikit-learn</span>
-            <span class="skill">Time-series forecasting</span>
-            <span class="skill">Probabilistic models</span>
-            <span class="skill">Model evaluation (RMSE, sMAPE)</span>
-            <span class="skill">Power BI</span>
-          </div>
-        </div>
-        <div class="panel col-6">
-          <p style="margin:0;color:var(--text);font-weight:650;">Programming & Math</p>
-          <div class="skills">
-            <span class="skill">Python</span>
-            <span class="skill">SQL</span>
-            <span class="skill">Java</span>
-            <span class="skill">Linear Algebra</span>
-            <span class="skill">Probability</span>
-            <span class="skill">Statistical Analysis</span>
-          </div>
-        </div>
+    </div>
+
+    <!-- Programming, Visualization & Math -->
+    <div class="panel col-6">
+      <p style="margin:0;color:var(--text);font-weight:650;">
+        Programming, Visualization & Math
+      </p>
+      <div class="skills">
+        <span class="skill">Tableau</span>
+        <span class="skill">Power BI</span>
+        <span class="skill">Matplotlib</span>
+        <span class="skill">Seaborn</span>
+        <span class="skill">Java</span>
+        <span class="skill">Kotlin</span>
+        <span class="skill">Linear Algebra</span>
+        <span class="skill">Probability</span>
+        <span class="skill">Statistical Analysis</span>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- PROJECTS -->
     <section id="projects" class="reveal">
@@ -546,21 +559,39 @@
 
       <div class="grid">
         <div class="panel project col-6">
-          <div class="top">
-            <div>
-              <h3>LineUp — Wait Time Android App</h3>
-              <div style="color:var(--muted);font-size:.92rem;margin-top:2px;">UW–Madison • Oct 2025 – Present</div>
-            </div>
-            <span class="tag">Kotlin • Jetpack Compose</span>
-          </div>
-          <p>
-            Android app that provides real-time wait time information for nearby restaurants and study places in Madison.
-          </p>
-          <ul>
-  <li>Built an Android app in Kotlin + Jetpack Compose for real-time wait times around Madison.</li>
-  <li>Integrated Google Maps + Places APIs for location search, place data, and navigation.</li>
-  <li>Added persistent user preferences (SharedPreferences) for filters and saved settings.</li>
-</ul>
+  <div class="top">
+    <div>
+      <h3>LineUp — Location-Based Restaurant Wait Time Analytics</h3>
+      <div style="color:var(--muted);font-size:.92rem;margin-top:2px;">
+        UW–Madison • Oct 2025 – Dec 2025
+      </div>
+    </div>
+    <span class="tag">Kotlin • Firebase • Analytics</span>
+  </div>
+
+  <p>
+    A location-based analytics system that helps students make real-time dining decisions
+    by surfacing fresh, reliable wait-time data.
+  </p>
+
+  <ul>
+    <li>
+      Designed a crowdsourced wait-time analytics pipeline using location-based data
+      to support real-time decision making.
+    </li>
+    <li>
+      Analyzed system performance and user behavior to diagnose data staleness
+      and latency bottlenecks impacting user trust.
+    </li>
+    <li>
+      Implemented performance optimizations using API batching, parallel calls,
+      caching, and time-based data expiration.
+    </li>
+    <li>
+      Reduced end-to-end data latency and load times by 50%, improving data freshness
+      and decision reliability for users.
+    </li>
+  </ul>
 
           
         </div>
